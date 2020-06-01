@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        if(num.size()==k)
+            return "0";
+       while(k--){
+           bool last=true;
+           for(int i=0;i<num.size();i++){
+               if(!num.empty()&&num[i]>num[i+1]&&last){
+                   num.erase(i,1);
+                   last=false;
+                   break;
+               }
+           }//for end
+           if(last) 
+                   num.pop_back();
+           while(!num.empty() && num[0]=='0')     num.erase(0,1);
+          if(num.empty()) return "0"; 
+        // return num;
+       }//while end
+        return num;        
+    }
+};

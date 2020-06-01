@@ -1,0 +1,33 @@
+class Solution {
+    void srch(vector<int>&nums,int low,int high,int &val){
+        if(low>high)
+            return;
+        if(low==high){
+            val= nums[low];
+            return;
+        }
+        int mid=(high+low)/2;
+        if(mid%2==0)
+        {
+            if(nums[mid]==nums[mid+1])
+                srch(nums,mid+2,high,val);
+            else
+                srch(nums,low,mid,val);
+        }
+        else{
+            if(nums[mid]==nums[mid-1])
+                srch(nums,mid+1,high,val);
+            else
+                srch(nums,low,mid-1,val);
+        }
+    }
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+       ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        int val=0;
+        srch(nums,0,nums.size()-1,val);
+        return val;
+    }
+    
+};

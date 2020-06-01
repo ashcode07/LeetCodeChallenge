@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        if(image[sr][sc]==newColor)
+            return image;
+        change(image,sr,sc,image[sr][sc],newColor);
+        return image;
+    }
+    void change(vector<vector<int>>& image, int sr, int sc,int prevc, int newColor){
+        if (sr < 0 || sc < 0 || sr >= image.size() || sc >= image[0].size()) {
+            return;
+        }
+        if(image[sr][sc]!=prevc)
+            return;
+        if(image[sr][sc]==newColor)
+            return;
+        
+        image[sr][sc]=newColor;
+        change(image,sr+1,sc,prevc,newColor);
+         change(image,sr-1,sc,prevc,newColor);
+        change(image,sr,sc+1,prevc,newColor);
+         change(image,sr,sc-1,prevc,newColor);
+    } 
+};
