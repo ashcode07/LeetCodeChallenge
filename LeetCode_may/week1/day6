@@ -1,0 +1,18 @@
+class Solution {
+    
+public:
+    int majorityElement(vector<int>& nums) {
+        ios::sync_with_stdio(false); std::cin.tie(nullptr); std::cout.tie(nullptr);
+        int maj=0,ele=0;;
+        unordered_map<int,int> umap;
+        for(auto &i:nums)
+            umap[i]++;
+        for(auto &i:umap){
+            if(i.second>maj){
+                maj=i.second;
+                ele=i.first;
+            }
+        }
+        return ele;
+    }
+};

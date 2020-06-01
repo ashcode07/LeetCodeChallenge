@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+          ios_base::sync_with_stdio(false);
+         cin.tie(nullptr);
+        vector<int> vec(26);
+        for(auto &i:magazine)
+            vec[i-'a']++;
+        for(auto &i:ransomNote){
+            vec[i-'a']--;
+            if(vec[i-'a']<0)
+                return false;
+        }
+        return true;
+    }
+};

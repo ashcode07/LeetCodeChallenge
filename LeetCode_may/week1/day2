@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        int tot=0;
+        for(int i=0;i<J.size();i++)
+            tot+=(count(S.begin(), S.end(), J[i])); 
+        return tot;
+    }
+    
+};
