@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+         int freq1[26]={0};
+        int freq2[26]={0};
+        for (char c : p) freq1[c-'a']++;
+        int n = p.size();
+        vector<int> ret;
+        if ( n > s.size()) return ret;
+        string f;
+        for ( int i = 0 ; i < n ; i++){
+            freq2[s[i]-'a']++;
+            f.push_back(s[i]);
+        }
+        for ( int i = n ; i <= s.size() ; i++){
+            int ok =1;
+            for ( int j = 0 ; j < 26 ; j++){
+                if ( freq1[j] != freq2[j]) {
+                    ok =0;
+                    break;
+                }
+            }
+            if ( ok ) { 
+                ret.push_back(i - n);
+            }
+            if ( i == s.size()) break;
+            f.erase(f.begin());
+            f+=s[i];
+            freq2[s[i-n]-'a']--;
+            freq2[s[i]-'a']++;   
+        }
+        return ret;
+    }
+};

@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+         ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        if(s1.size()>s2.size())
+            return false;
+        vector<int>arr(26,0);
+        for(auto &i:s1){
+            arr[i-'a']++;
+        }
+        for(int i=0;i<=s2.size()-s1.size();i++){
+            vector<int>arr2(26,0);
+            if(arr[s2[i]-'a']!=0){
+                arr2[s2[i]-'a']++;
+                for(int j=1;j<s1.size();j++){
+                    arr2[s2[i+j]-'a']++;
+                   }
+                }
+                if(arr2==arr)
+                    return true;
+            }
+                
+        return false;
+    }
+};

@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int countSquares(vector<vector<int>>& matrix) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        int m=matrix.size();
+        int n=matrix[0].size();
+        vector<vector<int>> vec(m+1,vector<int>(n+1,0));
+        int count=0;int sum=0;
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(matrix[i-1][j-1]==1)
+                {vec[i][j]=min(vec[i-1][j],min(vec[i][j-1],vec[i-1][j-1]))+1;
+                cout<<vec[i][j];
+                 count+=vec[i][j];}
+            }//second
+        }//first
+        return count;
+    }
+};
