@@ -1,0 +1,59 @@
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        set<int> st;
+        unordered_map<int,int> umap;
+        int leng=0;
+        int count=0,length=0;
+        umap[0]=-1;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0)
+                count--;
+            else
+                count++;
+            // umap[count]++;
+            if(umap.find(count)!=umap.end())
+                leng=max(leng,i-umap[count]);
+            else umap[count]=i;
+            
+        }
+//         int maxi=INT_MIN,val;
+//         for(auto &i:umap){
+//             if(maxi<i.second){
+//                 maxi=i.second;
+//                 val=i.first;
+//             }
+//         }
+//         int start=0,end=0,num=maxi;
+//         count=0;
+//         cout<<val<<'\n';
+//         bool fst=true;
+//         for(int i=0;i<nums.size();i++){
+//                 if(count==val&&maxi==num){
+//                     start=i;
+//                     fst=false;
+//                     // cout<<start;
+//                 }
+//             if(nums[i]==0)
+//                 count--;
+//             else
+//                 count++;
+//             end++;
+            
+//             if(count==val && !fst){
+//                 leng+=end-start;
+//                 cout<<start<<' '<<end<<'\n';
+//                 start=end;
+                
+//                 num--;
+//             }
+//             if(num==0)
+//                 break;
+            
+//         }
+        return leng;
+        
+    }
+};

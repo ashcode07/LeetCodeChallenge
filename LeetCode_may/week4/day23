@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        vector<vector<int>> vec;
+        int a=A.size(),b=B.size();
+        int i=0,j=0;
+        int high,low;
+        while(i<a&&j<b){
+            low=max(A[i][0],B[j][0]);
+            high=min(A[i][1],B[j][1]);
+            if(low<=high)
+                vec.push_back({low,high});
+            if(A[i][1]<=B[j][1])
+                i++;
+            else
+                j++;
+        }
+        return vec;
+    }
+};
